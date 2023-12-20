@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Sequences Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 0 auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Random Sequences Generator</h2>
+    
+    <form method="post">
+        <label for="input_value">Enter a value:</label>
+        <input type="number" id="input_value" name="input_value" required>
+        <button type="submit">Generate Sequences</button>
+    </form>
+
+    <form method="post" action="/limpar">
+        <button type="submit">Limpar</button>
+    </form>
+
+    {% if sequences %}
+        <h3>Sequences generated for {{ input_value }}:</h3>
+        <table>
+            <tr>
+                <th>Sequence</th>
+            </tr>
+            {% for sequence in sequences %}
+                <tr>
+                    <td>{{ sequence|join(', ') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</body>
+</html>
